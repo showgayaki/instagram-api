@@ -17,3 +17,10 @@ https://tabiato.co.jp/biz/blog/instagram-graph-api-setup/
 ## パーミッション変更
 ホスト側で  
 `chmod +x src/cron/task.php`  
+
+## .envサンプル
+```
+TZ=Asia/Tokyo
+INSTAGRAM_ACCESS_TOKEN=
+INSTAGRAM_BUSINESS_ID=
+```
