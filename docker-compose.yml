@@ -1,0 +1,30 @@
+services:
+  php:
+    build:
+      context: ./docker/php
+      args:
+        - TZ=${TZ}
+        - INSTAGRAM_ACCESS_TOKEN=${INSTAGRAM_ACCESS_TOKEN}
+        - INSTAGRAM_BUSINESS_ID=${INSTAGRAM_BUSINESS_ID}
+    env_file: .env
+    volumes:
+      - ./src:/var/www/html:delegated
+    networks:
+      - instagram-network
+
+  nginx:
+    build:
+      context: ./docker/nginx
+      args:
+        - TZ=${TZ}
+    volumes:
+      - ./src/public:/var/www/html/public:ro
+    ports:
+      - "8080:80"
+    depends_on:
+      - php
+    networks:
+      - instagram-network
+
+networks:
+  instagram-network:
