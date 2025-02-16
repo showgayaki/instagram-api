@@ -19,19 +19,18 @@ document.addEventListener("DOMContentLoaded", async function () {
             postElement.classList.add("post");
 
             const link = document.createElement("a");
+            link.classList.add("post__link");
             link.href = post.permalink;
             link.target = "_blank";
 
             const img = document.createElement("img");
+            img.classList.add("post__image");
             img.src = post.media_type === "VIDEO" ? post.thumbnail_url : post.media_url;
             img.alt = "Instagram Post";
 
-            const caption = document.createElement("p");
-            caption.textContent = post.caption || "No Caption";
 
             link.appendChild(img);
             postElement.appendChild(link);
-            postElement.appendChild(caption);
             postsContainer.appendChild(postElement);
         });
 
